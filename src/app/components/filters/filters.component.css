@@ -1,0 +1,6 @@
+.filter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 280px;
+}

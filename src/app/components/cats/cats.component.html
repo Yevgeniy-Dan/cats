@@ -1,6 +1,8 @@
-<mat-grid-list cols="3" gutterSize="10px">
-  <mat-grid-tile *ngFor="let cat of cats">
-    <img [src]="cat.url" [alt]="cat.id" class="cat-image" />
-    <!-- TODO: change alt to desc from cat object -->
-  </mat-grid-tile>
-</mat-grid-list>
+<div>
+  <mat-grid-list cols="3" gutterSize="10px">
+    <mat-grid-tile *ngFor="let cat of cats">
+      <img [src]="cat.url" [alt]="cat.id" class="cat-image" />
+      <!-- TODO: change alt to desc from cat object -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
