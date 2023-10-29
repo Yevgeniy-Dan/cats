@@ -1,0 +1,12 @@
+<mat-radio-group
+  aria-label="Select an option"
+  class="filter-container"
+  *ngFor="let value of qtyFilterValues"
+>
+  <mat-radio-button
+    [value]="value"
+    [checked]="qty === value"
+    (change)="onQtyChange(value)"
+    >{{ value }}</mat-radio-button
+  >
+</mat-radio-group>

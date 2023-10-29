@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="cats$ | async as cats">
   <mat-grid-list cols="3" gutterSize="10px">
     <mat-grid-tile *ngFor="let cat of cats">
       <img [src]="cat.url" [alt]="cat.id" class="cat-image" />
