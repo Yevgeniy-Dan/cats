@@ -21,10 +21,16 @@ export const reducers: ActionReducerMap<AppState> = {
 export const effects: Array<any> = [catsStore.CatsEffects];
 
 /** Selector to get cats' slice of state */
-export const selectCats = (state: AppState) => state.catsState;
+export const selectCatsFeatureState = (state: AppState) => state.catsState;
 
 /** Selector for selecting cat objects */
 export const selectCatsPhotos = createSelector(
-  selectCats,
+  selectCatsFeatureState,
   (state: catsStore.CatsState) => state.cats
+);
+
+/** Selector for get loading state */
+export const selectCatsLoading = createSelector(
+  selectCatsFeatureState,
+  (state: catsStore.CatsState) => state.loading
 );

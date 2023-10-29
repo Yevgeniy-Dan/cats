@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState, selectCatsPhotos } from 'src/app/app.state';
+import {
+  AppState,
+  selectCatsLoading,
+  selectCatsPhotos,
+} from 'src/app/app.state';
 
 import { loadCats } from './state';
 
@@ -18,6 +22,7 @@ export class CatsComponent implements OnInit {
   private qty: number = 10;
   /** Array for storing photos of cats */
   cats$: Observable<any> | undefined;
+  loading$: Observable<boolean> | undefined;
 
   constructor(private store: Store<AppState>) {}
 
@@ -25,6 +30,8 @@ export class CatsComponent implements OnInit {
     this.getCats();
     // Select cats photos from app state
     this.cats$ = this.store.pipe(select(selectCatsPhotos));
+    // Select loading state from app state
+    this.loading$ = this.store.pipe(select(selectCatsLoading));
   }
 
   /** Initial call to server for selecting cats photos */

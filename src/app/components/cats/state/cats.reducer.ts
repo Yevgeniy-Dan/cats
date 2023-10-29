@@ -4,9 +4,12 @@ import { CatsState, initialState } from './cats.state';
 
 const catsReducer = createReducer(
   initialState,
+  on(catsActions.loadCats, (state) => {
+    return { ...state, loading: true };
+  }),
   // Handle the loadCatsComplete action
   on(catsActions.loadCatsComplete, (state, { cats }) => {
-    return { cats }; // Update the state with new cats data
+    return { ...state, cats, loading: false }; // Update the state with new cats data
   })
 );
 

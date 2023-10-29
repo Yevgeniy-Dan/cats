@@ -11,7 +11,7 @@ import { loadCats } from '../cats/state';
   styleUrls: ['./quantity-filter.component.css'],
 })
 export class FiltersComponent {
-  @Input() qtyFilterValues: number[] = qtyFilterValues;
+  qtyFilterValues: number[] = qtyFilterValues;
   qty: number = 10; /**TODO: achieve a "single source of truth" (SSOT) architecture */
 
   constructor(private store: Store<AppState>) {}

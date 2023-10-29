@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,6 +22,7 @@ import { reducers, initialState, effects } from './app.state';
     HttpClientModule,
     MatGridListModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
     StoreModule.forRoot(reducers, { initialState }),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
