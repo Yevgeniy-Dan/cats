@@ -1,6 +1,6 @@
 import { ActionReducerMap, createSelector } from '@ngrx/store';
 
-import * as catsStore from './components/cats/state';
+import * as catsStore from './store';
 
 /** Define the interface of the application state */
 export interface AppState {

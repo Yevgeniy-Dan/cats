@@ -6,7 +6,7 @@ import {
   LOAD_CATS,
   LOAD_CATS_COMPLETE,
   loadCatsComplete,
-} from './cats.actions';
+} from '../actions/cats.actions';
 
 @Injectable()
 export class CatsEffects {

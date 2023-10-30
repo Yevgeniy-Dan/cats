@@ -9,7 +9,7 @@ import {
 
 import { Cat } from 'src/app/interfaces/Cat';
 
-import { loadCats } from './state';
+import { loadCats } from '../../store';
 
 /**
  * The component is used to obtain cat objects

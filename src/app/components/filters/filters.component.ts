@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AppState } from 'src/app/app.state';
-import { qtyFilterValues } from 'src/app/utils/filters';
-import { loadCats } from '../cats/state';
+import { qtyFilterValues } from 'src/app/constants/filters.constants';
+import { loadCats } from '../../store';
 import { Breed } from 'src/app/interfaces/Breed';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
