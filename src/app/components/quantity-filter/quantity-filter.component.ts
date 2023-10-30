@@ -12,7 +12,7 @@ import { loadCats } from '../cats/state';
 })
 export class FiltersComponent {
   qtyFilterValues: number[] = qtyFilterValues;
-  qty: number = 10; /**TODO: achieve a "single source of truth" (SSOT) architecture */
+  qty: number = 10;
 
   constructor(private store: Store<AppState>) {}
 

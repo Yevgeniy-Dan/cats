@@ -20,8 +20,6 @@ import { loadCats } from './state';
   styleUrls: ['./cats.component.css'],
 })
 export class CatsComponent implements OnInit {
-  /** Quantity of results (default - 10)   */
-  private qty: number = 10;
   /** Array for storing photos of cats */
   cats$?: Observable<Cat[]>;
   loading$?: Observable<boolean>;
@@ -36,8 +34,8 @@ export class CatsComponent implements OnInit {
     this.loading$ = this.store.pipe(select(selectCatsLoading));
   }
 
-  /** Initial call to server for selecting cats photos */
+  /** Initial call to server for selecting cats photos (default 10) */
   private getCats(): void {
-    this.store.dispatch(loadCats({ qty: this.qty }));
+    this.store.dispatch(loadCats({ qty: 10 }));
   }
 }
