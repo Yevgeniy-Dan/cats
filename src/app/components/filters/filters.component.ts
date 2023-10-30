@@ -19,7 +19,7 @@ export class FiltersComponent {
   qtyFilterValues: number[] = qtyFilterValues;
 
   filterForm: FormGroup = this.fb.group({
-    breed: [null],
+    breeds: [null],
     qty: [10],
   });
 
@@ -38,13 +38,15 @@ export class FiltersComponent {
     this.store.dispatch(loadCats({ qty }));
   }
 
-  changeBreed(breed: Breed): void {
+  changeBreed(breeds: Breed[]): void {
     // Purpose: Handle changes in the breed filter and trigger a store action with updated parameters.
     const currentQty = this.filterForm.get('qty')!.value;
 
     // Change breed form value
-    this.filterForm.get('breed')?.setValue(breed);
+    this.filterForm.get('breeds')?.setValue(breeds);
 
-    this.store.dispatch(loadCats({ qty: currentQty, breed: breed.id }));
+    const breedList = breeds.map((breed) => breed.id).join(',');
+
+    this.store.dispatch(loadCats({ qty: currentQty, breed: breedList }));
   }
 }

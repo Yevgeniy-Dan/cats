@@ -1,8 +1,12 @@
 <form [formGroup]="filterForm">
   <mat-form-field>
     <mat-label>Breeds</mat-label>
-    <mat-select formControlName="breed" (valueChange)="changeBreed($event)">
-      <mat-option *ngFor="let breed of resolvedBreeds" [value]="breed.id">{{
+    <mat-select
+      formArrayName="breeds"
+      (valueChange)="changeBreed($event)"
+      multiple
+    >
+      <mat-option *ngFor="let breed of resolvedBreeds" [value]="breed">{{
         breed.name
       }}</mat-option>
     </mat-select>

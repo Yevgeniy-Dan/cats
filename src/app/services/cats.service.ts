@@ -24,7 +24,8 @@ export class CatsService {
     return this.http.get<Cat[]>(`${environment.apiUrl}/images/search`, {
       params: new HttpParams()
         .set('limit', limit)
-        .set('breed_ids', breed || ''),
+        .set('breed_ids', breed || '')
+        .set('has_breeds', 1), // pull cats only with a certain breed
     });
   }
 
