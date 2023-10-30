@@ -16,7 +16,7 @@ export class CatsEffects {
       ofType(LOAD_CATS), // Listen for LOAD_CATS action
       mergeMap((action: any) => {
         // Call the CatsService to get cats and dispatch an action
-        return this.catsService.getCats(action?.qty).pipe(
+        return this.catsService.getCats(action!.qty, action?.breed).pipe(
           map((cats) => loadCatsComplete({ cats })),
           catchError(() => EMPTY)
         );

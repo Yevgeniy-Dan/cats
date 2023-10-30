@@ -20,9 +20,11 @@ export class CatsService {
    * @returns {Observable<Cat[]>}  an array of Cat objects
    */
 
-  getCats(limit: number): Observable<Cat[]> {
+  getCats(limit: number, breed?: string): Observable<Cat[]> {
     return this.http.get<Cat[]>(`${environment.apiUrl}/images/search`, {
-      params: new HttpParams().set('limit', limit),
+      params: new HttpParams()
+        .set('limit', limit)
+        .set('breed_ids', breed || ''),
     });
   }
 

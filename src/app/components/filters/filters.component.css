@@ -1,14 +1,13 @@
-.filter-container {
+.qty-filter-container {
   display: flex;
   flex-direction: column;
-  padding: 18px;
 }
 
-.filter-header {
+.qty-filter-header {
   margin-bottom: 10px;
 }
 
-.radio--btn-group {
+.radio-btn-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
