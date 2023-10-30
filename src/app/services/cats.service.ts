@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Cat } from '../interfaces/Cat';
+import { Breed } from '../interfaces/Breed';
+
 import { environment } from 'environment/environment';
 
 /**API service for providing endpoints to a server with cats */
@@ -14,12 +17,21 @@ export class CatsService {
   /**
    *
    * @param limit used  to indicate the number of results returned
-   * @returns {Observable<Cat[]>} - an array of Cat objects
+   * @returns {Observable<Cat[]>}  an array of Cat objects
    */
 
   getCats(limit: number): Observable<Cat[]> {
-    return this.http.get<Cat[]>(environment.apiUrl, {
+    return this.http.get<Cat[]>(`${environment.apiUrl}/images/search`, {
       params: new HttpParams().set('limit', limit),
     });
+  }
+
+  /**
+   *
+   * @returns {Observable<Breed[]>} - a list of breeds
+   */
+
+  getBreeds(): Observable<Breed[]> {
+    return this.http.get<Breed[]>(`${environment.apiUrl}/breeds`);
   }
 }

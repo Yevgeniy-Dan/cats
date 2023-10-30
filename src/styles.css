@@ -16,3 +16,11 @@
 .cats-container {
   width: 80%;
 }
+
+.loading-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}

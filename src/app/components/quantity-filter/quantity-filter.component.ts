@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { AppState } from 'src/app/app.state';
 import { qtyFilterValues } from 'src/app/utils/filters';

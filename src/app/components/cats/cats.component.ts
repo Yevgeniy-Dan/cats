@@ -7,6 +7,8 @@ import {
   selectCatsPhotos,
 } from 'src/app/app.state';
 
+import { Cat } from 'src/app/interfaces/Cat';
+
 import { loadCats } from './state';
 
 /**
@@ -21,8 +23,8 @@ export class CatsComponent implements OnInit {
   /** Quantity of results (default - 10)   */
   private qty: number = 10;
   /** Array for storing photos of cats */
-  cats$: Observable<any> | undefined;
-  loading$: Observable<boolean> | undefined;
+  cats$?: Observable<Cat[]>;
+  loading$?: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 

@@ -3,11 +3,3 @@
   max-height: 100%;
   object-fit: cover;
 }
-
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  max-height: 100%;
-}
