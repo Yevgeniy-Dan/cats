@@ -1,11 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as catsActions from '../actions/cats.actions';
-import { Cat } from 'src/app/interfaces/Cat';
-
-export interface CatsState {
-  cats: Cat[];
-  loading: boolean;
-}
+import { CatsState } from '..';
 
 export const initialState: CatsState = {
   cats: [],
@@ -17,13 +12,12 @@ const catsReducer = createReducer(
   on(catsActions.loadCats, (state) => {
     return { ...state, loading: true };
   }),
-  // Handle the loadCatsComplete action
   on(catsActions.loadCatsComplete, (state, { cats }) => {
-    return { ...state, cats, loading: false }; // Update the state with new cats data
+    return { ...state, cats, loading: false };
   })
 );
 
 /** The main cats reducer function */
 export function reducer(state: CatsState | undefined, action: Action) {
-  return catsReducer(state, action); //Delegate to the catsReducer created above
+  return catsReducer(state, action);
 }

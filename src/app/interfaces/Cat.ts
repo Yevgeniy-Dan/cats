@@ -1,4 +1,4 @@
-export interface Cat {
+export interface ICat {
   id: number;
   url: string;
 }

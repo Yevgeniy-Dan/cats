@@ -11,19 +11,19 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="qty-filter-container">
+  <div class="quantity-filter-container">
     <mat-label>Quantity of results</mat-label>
     <mat-radio-group
       aria-label="Select an option"
       class="radio-btn-group"
-      formControlName="qty"
+      formControlName="quantity"
     >
       <mat-radio-button
         class="radio-btn"
-        *ngFor="let value of qtyFilterValues"
+        *ngFor="let value of quantityFilterValues"
         [value]="value"
-        [checked]="filterForm.get('qty')?.value === value"
-        (change)="changeQty(value)"
+        [checked]="filterForm.get('quantity')?.value === value"
+        (change)="changeQuantityValue(value)"
       >
         <div class="radio-btn-content">{{ value }}</div>
       </mat-radio-button>

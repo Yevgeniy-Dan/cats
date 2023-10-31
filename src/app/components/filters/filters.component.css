@@ -1,9 +1,9 @@
-.qty-filter-container {
+.quantity-filter-container {
   display: flex;
   flex-direction: column;
 }
 
-.qty-filter-header {
+.quantity-filter-header {
   margin-bottom: 10px;
 }
 

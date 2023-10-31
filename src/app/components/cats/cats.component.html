@@ -1,9 +1,9 @@
-<div class="loading-container" *ngIf="loading$ | async; else showCats">
+<div class="loading-container" *ngIf="catsLoading$ | async; else showCats">
   <mat-spinner> </mat-spinner>
 </div>
 
 <ng-template #showCats>
-  <div *ngIf="cats$ | async as cats">
+  <div *ngIf="catsPhotos$ | async as cats">
     <mat-grid-list cols="3" gutterSize="10px">
       <mat-grid-tile *ngFor="let cat of cats">
         <img [src]="cat.url" [alt]="cat.id" class="cat-image" />

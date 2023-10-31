@@ -5,11 +5,11 @@ import {
   AppState,
   selectCatsLoading,
   selectCatsPhotos,
-} from 'src/app/app.state';
+} from 'src/app/store/index';
 
-import { Cat } from 'src/app/interfaces/Cat';
+import { ICat } from 'src/app/interfaces/cat';
 
-import { loadCats } from '../../store';
+import { loadCats } from 'src/app/store/actions/cats.actions';
 
 /**
  * The component is used to obtain cat objects
@@ -20,22 +20,19 @@ import { loadCats } from '../../store';
   styleUrls: ['./cats.component.css'],
 })
 export class CatsComponent implements OnInit {
-  /** Array for storing photos of cats */
-  cats$?: Observable<Cat[]>;
-  loading$?: Observable<boolean>;
+  catsPhotos$?: Observable<ICat[]>;
+  catsLoading$?: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.getCats();
-    // Select cats photos from app state
-    this.cats$ = this.store.pipe(select(selectCatsPhotos));
-    // Select loading state from app state
-    this.loading$ = this.store.pipe(select(selectCatsLoading));
+    this.catsPhotos$ = this.store.pipe(select(selectCatsPhotos));
+    this.catsLoading$ = this.store.pipe(select(selectCatsLoading));
   }
 
   /** Initial call to server for selecting cats photos (default 10) */
   private getCats(): void {
-    this.store.dispatch(loadCats({ qty: 10 }));
+    this.store.dispatch(loadCats({ quantity: 10 }));
   }
 }

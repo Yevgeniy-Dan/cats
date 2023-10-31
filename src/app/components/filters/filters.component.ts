@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppState } from 'src/app/app.state';
-import { qtyFilterValues } from 'src/app/constants/filters.constants';
-import { loadCats } from '../../store';
-import { Breed } from 'src/app/interfaces/Breed';
+import { AppState } from 'src/app/store/index';
+import { quantityFilterValues } from 'src/app/constants/filters.constants';
+import { loadCats } from 'src/app/store/actions/cats.actions';
+import { IBreed } from 'src/app/interfaces/breed';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -15,12 +15,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./filters.component.css'],
 })
 export class FiltersComponent {
-  resolvedBreeds: Breed[];
-  qtyFilterValues: number[] = qtyFilterValues;
+  resolvedBreeds: IBreed[];
+  quantityFilterValues: number[] = quantityFilterValues;
 
   filterForm: FormGroup = this.fb.group({
     breeds: [null],
-    qty: [10],
+    quantity: [10],
   });
 
   constructor(
@@ -28,25 +28,23 @@ export class FiltersComponent {
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
-    // Initialize component with resolved breeds data.
     this.resolvedBreeds = this.route.snapshot.data['breeds'];
   }
 
-  changeQty(qty: number) {
-    // Handle changes in the quantity filter and trigger a store action.
-    this.filterForm.get('qty')?.setValue(qty);
-    this.store.dispatch(loadCats({ qty }));
+  changeQuantityValue(quantity: number) {
+    this.filterForm.get('quantity')?.setValue(quantity);
+    this.store.dispatch(loadCats({ quantity: quantity }));
   }
 
-  changeBreed(breeds: Breed[]): void {
-    // Purpose: Handle changes in the breed filter and trigger a store action with updated parameters.
-    const currentQty = this.filterForm.get('qty')!.value;
+  changeBreed(breeds: IBreed[]): void {
+    const currentQuantity = this.filterForm.get('quantity')!.value;
 
-    // Change breed form value
     this.filterForm.get('breeds')?.setValue(breeds);
 
     const breedList = breeds.map((breed) => breed.id).join(',');
 
-    this.store.dispatch(loadCats({ qty: currentQty, breed: breedList }));
+    this.store.dispatch(
+      loadCats({ quantity: currentQuantity, breed: breedList })
+    );
   }
 }

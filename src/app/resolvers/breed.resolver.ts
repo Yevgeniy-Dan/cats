@@ -6,19 +6,19 @@ import {
 } from '@angular/router';
 import { of, take, mergeMap, Observable, EMPTY } from 'rxjs';
 
-import { CatsService } from '../services/cats.service';
-import { Breed } from '../interfaces/Breed';
+import { CatsService } from '../cats.service';
+import { IBreed } from '../interfaces/breed';
 
 /**
  * This resolver allows you to load the names of cat breeds before rendering the component
  * @param route The activated route snapshot, which contains information about the current route.
  * @param state The router state snapshot, providing details about the current router state.
- * @returns {Observable<Breed[]>} An observable of an array of cat breed data. It ensures the breed data is available before rendering the component.
+ * @returns {Observable<IBreed[]>} An observable of an array of cat breed data. It ensures the breed data is available before rendering the component.
  */
-export const breedResolver: ResolveFn<Breed[]> = (
+export const breedResolver: ResolveFn<IBreed[]> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
-): Observable<Breed[]> => {
+): Observable<IBreed[]> => {
   const catsService = inject(CatsService);
 
   switch (state.url) {

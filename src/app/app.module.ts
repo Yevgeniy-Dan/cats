@@ -21,8 +21,9 @@ import { CatsComponent } from './components/cats/cats.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { CatRootComponent } from './components/cat-root/cat-root.component';
 import { CatsInterceptor } from './interceptors/cats.interceptor';
-import { reducers, initialState, effects } from './app.state';
 import { breedResolver } from './resolvers/breed.resolver';
+import { CatsEffects } from './store/effects/cats.effects';
+import * as fromCats from './store/reducers/cats.reducer';
 
 const appRoutes: Routes = [
   { path: '', component: CatRootComponent, resolve: { breeds: breedResolver } },
@@ -46,8 +47,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSelectModule,
     MatFormFieldModule,
-    StoreModule.forRoot(reducers, { initialState }),
-    EffectsModule.forRoot(effects),
+    StoreModule.forRoot({ cats: fromCats.reducer }),
+    EffectsModule.forRoot([CatsEffects]),
     StoreDevtoolsModule.instrument({
       // Required for ReduxDevTools
       maxAge: 25, // Track history for 25 actions
