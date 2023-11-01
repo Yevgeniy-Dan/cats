@@ -1,0 +1,32 @@
+<form [formGroup]="filterForm">
+  <mat-form-field>
+    <mat-label>Breeds</mat-label>
+    <mat-select
+      formArrayName="breeds"
+      (valueChange)="changeBreed($event)"
+      multiple
+    >
+      <mat-option *ngFor="let breed of resolvedBreeds" [value]="breed">{{
+        breed.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="quantity-filter-container">
+    <mat-label>Quantity of results</mat-label>
+    <mat-radio-group
+      aria-label="Select an option"
+      class="radio-btn-group"
+      formControlName="quantity"
+    >
+      <mat-radio-button
+        class="radio-btn"
+        *ngFor="let value of quantityFilterValues"
+        [value]="value"
+        [checked]="filterForm.get('quantity')?.value === value"
+        (change)="changeQuantityValue(value)"
+      >
+        <div class="radio-btn-content">{{ value }}</div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>

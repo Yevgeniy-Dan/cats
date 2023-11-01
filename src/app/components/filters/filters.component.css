@@ -1,0 +1,19 @@
+.quantity-filter-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantity-filter-header {
+  margin-bottom: 10px;
+}
+
+.radio-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.radio-btn-content {
+  display: flex;
+  align-items: center;
+}
