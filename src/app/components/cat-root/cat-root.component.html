@@ -1,4 +1,10 @@
-<div class="container">
-  <app-filters></app-filters>
-  <app-cats-list class="cats-container"></app-cats-list>
+<div class="loading-container" *ngIf="appLoading; else showCatsContainer">
+  <mat-spinner></mat-spinner>
 </div>
+
+<ng-template #showCatsContainer>
+  <div class="container">
+    <app-filters></app-filters>
+    <app-cats-list class="cats-container"></app-cats-list>
+  </div>
+</ng-template>

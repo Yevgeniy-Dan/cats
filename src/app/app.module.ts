@@ -24,10 +24,7 @@ import { CatsInterceptor } from './interceptors/cats.interceptor';
 import { breedResolver } from './resolvers/breed.resolver';
 import { CatsEffects } from './store/effects/cats.effects';
 import * as fromCats from './store/reducers/cats.reducer';
-
-const appRoutes: Routes = [
-  { path: '', component: CatRootComponent, resolve: { breeds: breedResolver } },
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +35,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -53,7 +51,6 @@ const appRoutes: Routes = [
       // Required for ReduxDevTools
       maxAge: 25, // Track history for 25 actions
     }),
-    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     {
